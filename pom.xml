@@ -4,7 +4,7 @@
 
 	<groupId>com.cloudera</groupId>
 	<artifactId>spark-hbase</artifactId>
-	<version>0.0.4-clabs-SNAPSHOT</version>
+	<version>0.0.4.1-clabs-SNAPSHOT</version>
 	<packaging>jar</packaging>
 
 	<name>Spark HBase Integration</name>
@@ -12,6 +12,8 @@
 
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+		<java.version>1.6</java.version>
+		<cdh.version>-cdh5.3.2</cdh.version>
 	</properties>
 
 	<dependencies>
@@ -29,12 +31,12 @@
 		<dependency>
 			<groupId>org.apache.spark</groupId>
 			<artifactId>spark-core_2.10</artifactId>
-			<version>1.2.0-cdh5.3.0</version>
+			<version>1.2.0${cdh.version}</version>
 		</dependency>
 		<dependency>
 			<groupId>org.apache.spark</groupId>
 			<artifactId>spark-streaming_2.10</artifactId>
-			<version>1.2.0-cdh5.3.0</version>
+			<version>1.2.0${cdh.version}</version>
 			<type>test-jar</type>
 			<classifier>tests</classifier>
 			<!-- <scope>test</scope> Return-->
@@ -42,17 +44,17 @@
 		<dependency>
 			<groupId>org.apache.spark</groupId>
 			<artifactId>spark-streaming_2.10</artifactId>
-			<version>1.2.0-cdh5.3.0</version>
+			<version>1.2.0${cdh.version}</version>
 		</dependency>
 		<dependency>
 			<groupId>org.apache.hbase</groupId>
 			<artifactId>hbase-client</artifactId>
-			<version>0.98.6-cdh5.3.0</version>
+			<version>0.98.6${cdh.version}</version>
 		</dependency>
 		<dependency>
 			<groupId>org.apache.hbase</groupId>
 			<artifactId>hbase-client</artifactId>
-			<version>0.98.6-cdh5.3.0</version>
+			<version>0.98.6${cdh.version}</version>
 			<type>test-jar</type>
 			<classifier>tests</classifier>
 			<scope>test</scope>
@@ -60,30 +62,30 @@
 		<dependency>
 			<groupId>org.apache.hbase</groupId>
 			<artifactId>hbase-server</artifactId>
-			<version>0.98.6-cdh5.3.0</version>
+			<version>0.98.6${cdh.version}</version>
 		</dependency>
 		<dependency>
 			<groupId>org.apache.hbase</groupId>
 			<artifactId>hbase-server</artifactId>
-			<version>0.98.6-cdh5.3.0</version>
+			<version>0.98.6${cdh.version}</version>
 			<type>test-jar</type>
 			<!-- <classifier>tests</classifier> Return-->
 		</dependency>
 		<dependency>
 			<groupId>org.apache.hbase</groupId>
 			<artifactId>hbase-protocol</artifactId>
-			<version>0.98.6-cdh5.3.0</version>
+			<version>0.98.6${cdh.version}</version>
 		</dependency>
 		<dependency>
 			<groupId>org.apache.hbase</groupId>
 			<artifactId>hbase-hadoop2-compat</artifactId>
-			<version>0.98.6-cdh5.3.0</version>
+			<version>0.98.6${cdh.version}</version>
 			<!-- <scope>runtime</scope> --> 
 		</dependency>
 		<dependency>
 			<groupId>org.apache.hbase</groupId>
 			<artifactId>hbase-hadoop2-compat</artifactId>
-			<version>0.98.6-cdh5.3.0</version>
+			<version>0.98.6${cdh.version}</version>
 			<type>test-jar</type>
 			<classifier>tests</classifier>
 			<!-- <scope>test</scope> Return-->
@@ -91,12 +93,12 @@
 		<dependency>
 			<groupId>org.apache.hbase</groupId>
 			<artifactId>hbase-common</artifactId>
-			<version>0.98.6-cdh5.3.0</version>
+			<version>0.98.6${cdh.version}</version>
 		</dependency>
 		<dependency>
 			<groupId>org.apache.hbase</groupId>
 			<artifactId>hbase-common</artifactId>
-			<version>0.98.6-cdh5.3.0</version>
+			<version>0.98.6${cdh.version}</version>
 			<type>test-jar</type>
 			<classifier>tests</classifier>
 			<!-- <scope>test</scope> Return-->
@@ -104,13 +106,13 @@
 		<dependency>
 			<groupId>org.apache.hbase</groupId>
 			<artifactId>hbase-hadoop-compat</artifactId>
-			<version>0.98.6-cdh5.3.0</version>
+			<version>0.98.6${cdh.version}</version>
 			<!-- <scope>test</scope> Return-->
 		</dependency>
 		<dependency>
 			<groupId>org.apache.hbase</groupId>
 			<artifactId>hbase-hadoop-compat</artifactId>
-			<version>0.98.6-cdh5.3.0</version>
+			<version>0.98.6${cdh.version}</version>
 			<type>test-jar</type>
 			<classifier>tests</classifier>
 			<!-- <scope>test</scope> Return-->
@@ -128,6 +130,15 @@
 		<outputDirectory>target/scala/classes</outputDirectory>
 		<testOutputDirectory>target/scala/test-classes</testOutputDirectory>
 		<plugins>
+                        <plugin>
+                                <groupId>org.apache.maven.plugins</groupId>
+                                <artifactId>maven-compiler-plugin</artifactId>
+                                <version>3.2</version>
+                                <configuration>
+                                        <source>${java.version}</source>
+                                        <target>${java.version}</target>
+                                </configuration>
+                        </plugin>
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-surefire-plugin</artifactId>

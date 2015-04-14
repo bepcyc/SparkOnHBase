@@ -103,7 +103,7 @@ class InitialStateHBaseSparkStreamingSuite extends FunSuite with BeforeAndAfterE
       getValue()).equals("bar"))
   }
 
-  test("test for Hbase Receiver") {
+/*  test("test for Hbase Receiver") {
 
     val ssc = new StreamingContext(sc, Seconds(1))
 
@@ -145,7 +145,7 @@ class InitialStateHBaseSparkStreamingSuite extends FunSuite with BeforeAndAfterE
       true);
 
     ssc.stop(true);
-  }
+  }*/
 
   test("bulkIncrement to test HBase client") {
 
